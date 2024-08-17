@@ -1,9 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Logo, { LogoProps } from '.'
 
-export default {
+import Logo from '.'
+
+const meta: Meta<typeof Logo> = {
   title: 'Logo',
   component: Logo
-} as Meta
+}
 
-export const Default: StoryObj<LogoProps> = {}
+export default meta
+
+type Story = StoryObj<typeof Logo>
+
+export const Default: Story = {}
