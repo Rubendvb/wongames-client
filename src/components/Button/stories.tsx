@@ -4,11 +4,20 @@ import Button from '.'
 
 const meta: Meta<typeof Button> = {
   title: 'Button',
-  component: Button
+  component: Button,
+  argTypes: {
+    children: {
+      type: 'string'
+    }
+  }
 }
 
 export default meta
 
 type Story = StoryObj<typeof Button>
 
-export const Default: Story = {}
+export const Default: Story = {
+  args: {
+    children: 'Buy now'
+  }
+}
