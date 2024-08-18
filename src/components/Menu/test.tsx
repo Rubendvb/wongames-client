@@ -1,18 +1,14 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { renderWithRender } from '../../utils/tests/helpers'
 
 import Menu from '.'
 
 describe('<Menu />', () => {
-  it('should render the heading', () => {
-    // renderiza o componente
-    const { container } = render(<Menu />)
+  it('should render the menu', () => {
+    renderWithRender(<Menu />)
 
-    // verifica se o texto existe no documento
-    expect(
-      screen.getByRole('heading', { name: /Menu/i })
-    ).toBeInTheDocument()
-
-    // gerar o snapshot
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/search/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/shopping cart/i)).toBeInTheDocument()
   })
 })
