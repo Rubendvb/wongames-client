@@ -1,6 +1,5 @@
 import { screen } from '@testing-library/react'
 import { renderWithRender } from '../../utils/tests/helpers'
-import 'jest-styled-components'
 
 import Logo from '.'
 
