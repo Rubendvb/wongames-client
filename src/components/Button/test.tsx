@@ -44,7 +44,7 @@ describe('<Button />', () => {
     })
   })
 
-  it('should render a n icon version', () => {
+  it('should render an icon version', () => {
     const { container } = renderWithRender(
       <Button icon={<AddShoppingCart data-testid="icon" />}>Buy now</Button>
     )
@@ -53,5 +53,18 @@ describe('<Button />', () => {
     expect(screen.getByTestId('icon')).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('should render Button as a link', () => {
+    renderWithRender(
+      <Button as="a" href="/link">
+        Buy now
+      </Button>
+    )
+
+    expect(screen.getByRole('link', { name: /Buy now/i })).toHaveAttribute(
+      'href',
+      '/link'
+    )
   })
 })
