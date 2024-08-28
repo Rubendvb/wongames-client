@@ -21,4 +21,24 @@ export default meta
 
 type Story = StoryObj<typeof Banner>
 
-export const Default: Story = {}
+export const Default: Story = {
+  render: (args) => (
+    <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
+      <Banner {...args} />
+    </div>
+  )
+}
+
+export const WithRibbon: Story = {
+  render: (args) => (
+    <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
+      <Banner {...args} />
+    </div>
+  ),
+
+  args: {
+    ribbon: '20% OFF',
+    ribbonSize: 'normal',
+    ribbonColor: 'primary'
+  }
+}
