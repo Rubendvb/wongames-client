@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithRender } from '../../utils/tests/helpers'
 
 import GameCard from '.'
@@ -48,5 +48,38 @@ describe('<GameCard />', () => {
     expect(screen.getByText('R$ 15,00')).not.toHaveStyle({
       'text-decoration': 'line-through'
     })
+  })
+
+  it('should render a filled Favorite icon when favorite is true', () => {
+    renderWithRender(<GameCard {...props} favorite />)
+
+    expect(screen.getByLabelText(/remove from wishlist/i)).toBeInTheDocument()
+  })
+
+  it('should call onFav method when favorite is clicked', () => {
+    const onFav = jest.fn()
+
+    renderWithRender(<GameCard {...props} favorite onFav={onFav} />)
+
+    fireEvent.click(screen.getAllByRole('button')[0])
+
+    expect(onFav).toHaveBeenCalled()
+  })
+
+  it('should render Ribbon', () => {
+    renderWithRender(
+      <GameCard
+        {...props}
+        ribbon="20% OFF"
+        ribbonColor="secondary"
+        ribbonSize="small"
+      />
+    )
+
+    const ribbon = screen.getByText(/20% OFF/i)
+
+    expect(ribbon).toHaveStyle({ backgroundColor: '#3CD3C1' })
+    expect(ribbon).toHaveStyle({ height: '2.6rem', fontSize: '1.2rem' })
+    expect(ribbon).toBeInTheDocument()
   })
 })
