@@ -18,7 +18,8 @@ const meta: Meta<typeof GameCard> = {
     promotionalPrice: 'R$ 215,00'
   },
   argTypes: {
-    onFav: { action: 'clicked' }
+    onFav: { action: 'clicked' },
+    ribbon: { type: 'string' }
   }
 }
 
@@ -27,3 +28,11 @@ export default meta
 type Story = StoryObj<typeof GameCard>
 
 export const Default: Story = {}
+
+export const WithRibbon: Story = {
+  args: {
+    ribbon: '20% OFF',
+    ribbonColor: 'primary',
+    ribbonSize: 'small'
+  }
+}
