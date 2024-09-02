@@ -97,7 +97,7 @@ export const BuyBox = styled.div`
 `
 
 type PriceProps = {
-  isPromotional?: boolean
+  $isPromotional?: boolean
 }
 
 const priceModifiers = {
@@ -117,13 +117,13 @@ const priceModifiers = {
 }
 
 export const Price = styled.div<PriceProps>`
-  ${({ theme, isPromotional }) => css`
+  ${({ theme, $isPromotional }) => css`
     display: inline-flex;
     font-weight: ${theme.font.bold};
     height: 3rem;
     align-items: center;
 
-    ${!isPromotional && priceModifiers.default(theme)}
-    ${isPromotional && priceModifiers.promotional(theme)}
+    ${!$isPromotional && priceModifiers.default(theme)}
+    ${$isPromotional && priceModifiers.promotional(theme)}
   `}
 `
